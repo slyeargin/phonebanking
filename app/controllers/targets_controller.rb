@@ -12,7 +12,6 @@ class TargetsController < ApplicationController
     if @target.save
       redirect_to campaign_path(@campaign), notice: "#{@target.first_name} #{@target.last_name} was added to your campaign."
     else
-
       flash.alert = "Target could not be created."
       render :new
     end
@@ -20,13 +19,19 @@ class TargetsController < ApplicationController
 
   def show
     @target = Target.find(params[:id])
+    @response = Response.new
   end
 
+  def update
+    @target = Target.find(params[:id])
+    @target.update_attributes(target_params)
+    redirect_to campaign_path(@campaign)
+  end
 
   protected
 
   def target_params
-    params.require(:target).permit(:first_name, :last_name, :phone_number, :zipcode)
+    params.require(:target).permit(:first_name, :last_name, :phone_number, :zipcode, :has_been_called)
   end
 
   def load_campaign

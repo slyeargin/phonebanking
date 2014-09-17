@@ -5,4 +5,15 @@
 
 %p.phone-number= number_to_phone(@target.phone_number, area_code: true)
 
+= simple_form_for [@campaign, @target], url: campaign_target_path do | target_form |
+  = target_form.label :has_been_called, 'Did you speak to a person or leave a voicemail?'
+  = target_form.collection_radio_buttons :has_been_called, [[true, 'Yes'] ,[false, 'No']], :first, :last
+  = target_form.simple_fields_for :responses, @response, url: new_campaign_target_response_path(@campaign, @target) do | target_response_form |
+    = target_response_form.input :question, :as => :hidden, :input_html => { :value => "Was the target aware?" }
+    = target_response_form.label :answer, 'Was #{@target.first_name} aware of #{@campaign.name}?'
+    = target_response_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
+  = target_form.submit 'Save Response'
+
+
+
 %hr

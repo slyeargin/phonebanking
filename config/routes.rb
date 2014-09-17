@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :campaigns, except: [:destroy, :update, :edit] do
-     resources :targets, only: [:new, :create, :show]
+     resources :targets, only: [:new, :create, :show, :update] do
+       resources :responses, only: [:new, :create]
+     end
    end
 
   # Example of regular route:
