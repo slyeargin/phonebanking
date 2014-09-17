@@ -3,4 +3,8 @@ class CampaignsController < ApplicationController
 
   end
 
+  def new
++
++  end
+
 end

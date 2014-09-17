@@ -47,3 +47,4 @@ group :test do
 end
 
 gem 'haml'
+gem 'simple_form'
