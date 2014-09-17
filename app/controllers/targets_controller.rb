@@ -18,6 +18,11 @@ class TargetsController < ApplicationController
     end
   end
 
+  def show
+    @target = Target.find(params[:id])
+  end
+
+
   protected
 
   def target_params
