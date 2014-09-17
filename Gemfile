@@ -45,6 +45,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda'
 end
 
 gem 'haml'

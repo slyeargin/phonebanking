@@ -1,6 +1,6 @@
 %h1 Create a Campaign
 
-= simple_form_for @campaign, url: campaigns_path do |f|
+= simple_form_for @campaign do |f|
   = f.input :name
   = f.input :summary, :as => :text
   = f.submit "Create Campaign"
