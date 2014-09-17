@@ -1,0 +1,8 @@
+%h1 Add a Target
+
+= simple_form_for [@campaign, @target], url: campaign_targets_path do |f|
+  = f.input :first_name, label: "First Name"
+  = f.input :last_name, label: "Last Name"
+  = f.input :phone_number, label: "Phone"
+  = f.input :zipcode, label: "ZIP Code"
+  = f.submit "Add Target to Campaign"

@@ -1,0 +1,9 @@
+%h1= @campaign.name
+
+%hr
+
+%ul#targets
+ - @campaign.targets.each do |target|
+  %li= #{target.first_name} #{target.last_name} - #{target.phone_number} - #{target.zipcode}
+
+= link_to "Add Target", new_campaign_target_path(@campaign)

@@ -1,0 +1,2 @@
+Fabricator(:campaign) do
+end
