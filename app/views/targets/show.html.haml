@@ -1,5 +1,8 @@
 %h1= @campaign.name
 
 %h2 #{@target.first_name} #{@target.last_name}
+%p.location #{@target.zipcode}
+
+%p.phone-number= number_to_phone(@target.phone_number, area_code: true)
 
 %hr
