@@ -1,6 +1,5 @@
 %h1= @campaign.name
 
+%h2 #{@target.first_name} #{@target.last_name}
+
 %hr
-
-
-  = link_to "Place a Call", campaign_target_path(@campaign, target)

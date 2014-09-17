@@ -3,7 +3,7 @@
 %hr
 
 %ul#targets
- - @campaign.targets.each do |target|
-  %li= #{target.first_name} #{target.last_name} - #{target.phone_number} - #{target.zipcode}
+ - @campaign.targets.each do |tar|
+  %li #{tar.first_name} #{tar.last_name} - #{tar.phone_number} - #{tar.zipcode} - #{link_to "View", campaign_target_path(@campaign, tar)}
 
 = link_to "Add Target", new_campaign_target_path(@campaign)
