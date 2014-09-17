@@ -8,8 +8,13 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    campaign = Campaign.create!(campaign_params)
-    redirect_to campaigns_path, notice: "The #{campaign.name} campaign has been created."
+    @campaign = Campaign.create!(campaign_params)
+     if @campaign.save
+      redirect_to campaigns_path, notice: "The #{@campaign.name} campaign has been created."
+    else
+      flash.alert = "Campaign could not be created."
+      render :new
+    end
   end
 
   protected
