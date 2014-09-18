@@ -1,6 +1,7 @@
 class TargetsController < ApplicationController
 
   before_action :load_campaign
+  before_action :authenticate_user!
 
   def new
     @target = Target.new
