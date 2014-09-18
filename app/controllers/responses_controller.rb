@@ -2,6 +2,7 @@ class ResponsesController < ApplicationController
 
   # before_action :load_campaign
   # before_action :load_target
+  before_action :authenticate_user!
 
   def new
 
