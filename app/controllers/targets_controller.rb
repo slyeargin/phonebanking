@@ -25,24 +25,16 @@ class TargetsController < ApplicationController
 
   def update
     @target = Target.find(params[:id])
-    @target.update_attributes(target_params)
-
-    params[:target][:responses_attributes].each do |k, v|
-      v.merge(:campaign_id => @campaign.id, :contacted_when => Time.now)
-      answer = response_params(v)
-      @response = @target.responses.build(answer)
-    end
+    @target.assign_attributes(target_params)
+    @target.save!
     redirect_to campaign_path(@campaign)
   end
+
 
   protected
 
   def target_params
-    params.require(:target).permit(:first_name, :last_name, :phone_number, :zipcode, :has_been_called)
-  end
-
-  def response_params(params)
-    params.require(:response).permit(:question, :answer, :contacted_when, :campaign_id)
+    params.require(:target).permit(:first_name, :last_name, :phone_number, :zipcode, :has_been_called, responses_attributes: [:response_id, :question, :answer, :contacted_when, :campaign_id])
   end
 
   def load_campaign
