@@ -13,10 +13,11 @@ feature "View a target" do
     current_path.should == campaign_target_path(@presidentialprimary, @camacho)
     choose('target_has_been_called_true')
     choose('target_responses_attributes_0_answer_true')
+    choose('target_responses_attributes_1_answer_true')
     click_button "Save Response"
     current_path.should == campaign_path(@presidentialprimary)
     @camacho.reload.has_been_called.should == true
-    @camacho.responses.count.should == 1
+    @camacho.responses.count.should == 2
     @awareness = Response.where(target_id: @camacho.id).first
     @awareness.question.should == "Was the target aware?"
   end
