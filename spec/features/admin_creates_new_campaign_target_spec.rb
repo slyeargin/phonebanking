@@ -1,4 +1,13 @@
 feature "Admin adds a campaign target" do
+  background do
+    @user = Fabricate(:user)
+    visit '/'
+    click_link 'Login'
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: @user.password
+    click_on 'Sign in'
+  end
+
   scenario "Happy path, create a target" do
     statehouse2014 = Fabricate(:campaign, name: "State House 2014", summary: "GOTV")
     visit campaigns_path
