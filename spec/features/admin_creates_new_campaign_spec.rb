@@ -21,6 +21,7 @@ feature "Adding a new campaign" do
     fill_in "Summary", with: "It's to let people know how awesome stuff is."
     click_on "Create Campaign"
     page.should have_content("The My Fantastic Campaign campaign has been created.")
+    page.should_not have_content("You don't belong to any campaigns.")
     current_path.should == campaigns_path
   end
 
