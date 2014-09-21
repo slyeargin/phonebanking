@@ -1,8 +1,9 @@
 %h1 Your Campaigns
 
 #your-campaigns
-  %h2 You do not have any campaigns.
-
-  %ul#campaigns= render @campaigns
+  - if @campaigns.count >= 1
+    %ul#campaigns= render @campaigns
+  - else
+    %h2 You don't belong to any campaigns.
 
   =link_to "Create a Campaign", new_campaign_path

@@ -1,0 +1,2 @@
+Fabricator(:caller) do
+end
