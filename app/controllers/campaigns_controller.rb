@@ -2,7 +2,7 @@ class CampaignsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @campaigns = Campaign.all
+    @campaigns = current_user.campaigns.all
   end
 
   def new
@@ -11,7 +11,8 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.create!(campaign_params)
-     if @campaign.save
+    @caller = Caller.create!(campaign_id: @campaign.id, user_id: current_user.id, is_campaign_owner: true)
+     if @campaign.save && @caller.save
       redirect_to campaigns_path, notice: "The #{@campaign.name} campaign has been created."
     else
       flash.alert = "Campaign could not be created."
@@ -20,7 +21,8 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @campaign = Campaign.find(params[:id])
+    @campaign = current_user.campaigns.find(params[:id])
+    @is_admin = current_user.callers.where("campaign_id = ?", params[:id]).pluck(:is_campaign_owner).first
   end
 
   protected
