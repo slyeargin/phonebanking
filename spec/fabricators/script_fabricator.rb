@@ -1,0 +1,2 @@
+Fabricator(:script) do
+end
