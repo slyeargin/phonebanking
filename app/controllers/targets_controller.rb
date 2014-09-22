@@ -22,6 +22,7 @@ class TargetsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @target = Target.find(params[:id])
     @response = Response.new
+    @script = Script.where("campaign_id = ?", params[:campaign_id]).pluck(:copy)
   end
 
   def update

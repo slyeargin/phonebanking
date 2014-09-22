@@ -9,6 +9,7 @@ feature "View a target" do
     click_on 'Sign in'
     @presidentialprimary = Fabricate(:campaign, name: "Presidential Primary", summary: "It's where you pick your party's candidate.")
     @caller = Fabricate(:caller, campaign_id: @presidentialprimary.id, user_id: @user.id)
+    @ppscript = Fabricate(:script, campaign_id: @presidentialprimary.id, copy: "Hi there.  Do you have a moment to talk about Brawndo, the thirst mutilator?")
     @camacho = Fabricate(:target, first_name: "President", last_name: "Camacho", phone_number: "5555551234", zipcode: "37206", campaign: @presidentialprimary)
   end
 
@@ -16,6 +17,7 @@ feature "View a target" do
     visit campaign_target_path(@presidentialprimary, @camacho)
     page.should have_content("President Camacho")
     current_path.should == campaign_target_path(@presidentialprimary, @camacho)
+    page.should have_content("Hi there.  Do you have a moment to talk about Brawndo, the thirst mutilator?")
     choose('target_has_been_called_true')
     choose('target_responses_attributes_0_answer_true')
     choose('target_responses_attributes_1_answer_true')
