@@ -6,5 +6,7 @@ class Campaign < ActiveRecord::Base
   has_many :users, through: :callers
   has_many :callers
 
-  accepts_nested_attributes_for :callers
+  has_many :scripts
+
+  accepts_nested_attributes_for :scripts
 end

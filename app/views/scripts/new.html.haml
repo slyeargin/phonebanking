@@ -1,0 +1,9 @@
+Add a Script for #{@campaign.name}
+
+= simple_form_for [@campaign, @script] do |f|
+  = f.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
+  = f.label :copy, 'Please provide a script for callers to use.'
+  = f.input :copy, :as => :text
+  = f.submit "Add Script"
+
+= link_to "Skip this Step", new_campaign_target_path(@campaign)
