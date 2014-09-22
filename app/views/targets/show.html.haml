@@ -5,6 +5,8 @@
 
 %p.phone-number= number_to_phone(@target.phone_number, area_code: true)
 
+%p.script= @script
+
 = simple_form_for [@campaign, @target] do | target_form |
   = target_form.label :has_been_called, 'Did you speak to a person or leave a voicemail?'
   = target_form.collection_radio_buttons :has_been_called, [[true, 'Yes'] ,[false, 'No']], :first, :last
