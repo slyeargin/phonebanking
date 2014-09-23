@@ -16,8 +16,6 @@ feature "Viewing campaigns" do
     fill_in "Email", with: @user1.email
     fill_in "Password", with: @user1.password
     click_on 'Sign in'
-    visit '/'
-    click_on "View Campaigns"
     page.should have_content("Your Campaigns")
     page.should have_content("My Campaign")
     page.should_not have_content("Nacho Campaign")
@@ -28,8 +26,6 @@ feature "Viewing campaigns" do
     fill_in "Email", with: @user2.email
     fill_in "Password", with: @user2.password
     click_on 'Sign in'
-    visit '/'
-    click_on "View Campaigns"
     page.should have_content("Your Campaigns")
     page.should have_content("My Campaign")
     page.should_not have_content("Nacho Campaign")
@@ -40,8 +36,6 @@ feature "Viewing campaigns" do
     fill_in "Email", with: @user3.email
     fill_in "Password", with: @user3.password
     click_on 'Sign in'
-    visit '/'
-    click_on "View Campaigns"
     page.should have_content("Your Campaigns")
     page.should have_content("You don't belong to any campaigns.")
     page.should_not have_content("My Campaign")
