@@ -11,12 +11,13 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = Campaign.create!(campaign_params)
-    @caller = Caller.create!(campaign_id: @campaign.id, user_id: current_user.id, is_campaign_owner: true)
-     if @campaign.save && @caller.save
-      redirect_to new_campaign_script_path(@campaign), notice: "The #{@campaign.name} campaign has been created."
+    @campaign = Campaign.create(campaign_params)
+    @caller = Caller.create(campaign_id: @campaign.id, user_id: current_user.id, is_campaign_owner: true)
+    if @campaign.save && @caller.save
+      flash[:success] = "The #{@campaign.name} campaign has been created."
+      redirect_to new_campaign_script_path(@campaign)
     else
-      flash.alert = "Campaign could not be created."
+      flash[:error] = "Campaign could not be created."
       render :new
     end
   end
