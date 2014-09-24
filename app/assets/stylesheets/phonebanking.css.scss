@@ -20,12 +20,20 @@
       text-shadow:         3px 3px 15px rgba(0, 0, 68, 0.67);
     }
   }
-  // h1 {
-  //   background: url('../img/logo.svg');
-  //   color: transparent;
-  //   background-size: contain;
-  //   background-repeat: no-repeat;
-  //   width: auto;
-  //   height: 100px;
-  // }
+}
+
+.ifempty {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  .container {
+    padding-bottom: 25px;
+  }
 }
