@@ -8,10 +8,11 @@
   %body
     = render :partial => "layouts/navbar"
 
-    %div.notice
-      = notice
-    %div.alert
-      = alert
-    = yield
+    %div.container
+      %div.notice
+        = notice
+      %div.alert
+        = alert
+      = yield
 
     = render :partial => "layouts/footer"
