@@ -53,6 +53,8 @@ group :test do
   gem 'fabrication'
 end
 
+gem 'rails_12factor', group: :production
+
 gem 'haml'
 gem 'simple_form'
 gem 'devise'
