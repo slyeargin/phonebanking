@@ -5,8 +5,8 @@
   .panel.panel-default
     .panel-heading Your Campaigns
     - if @campaigns.count >= 1
-      %ul.list-group#campaigns
-        %ul#campaigns= render @campaigns
+      %div.table-responsive
+        %table.table#campaigns= render @campaigns
     - else
       .panel-body
         %p.ifempty You don't belong to any campaigns. #{link_to "Create one?", new_campaign_path}
