@@ -1,8 +1,15 @@
-%h1 Add a Target
+%div.col-xs-6.col-lg-4
+  %h2 #{@campaign.name}
+  %p #{@campaign.summary}
 
-= simple_form_for [@campaign, @target], url: campaign_targets_path do |f|
-  = f.input :first_name, label: "First Name"
-  = f.input :last_name, label: "Last Name"
-  = f.input :phone_number, label: "Phone"
-  = f.input :zipcode, label: "ZIP Code"
-  = f.submit "Add Target to Campaign"
+%div.col-xs-12.col-sm-6.col-lg-8
+  .panel.panel-default
+    .panel-heading Add a Target to #{@campaign.name}
+    .panel-body
+      = simple_form_for [@campaign, @target], url: campaign_targets_path do |f|
+        = f.input :first_name, label: "First Name"
+        = f.input :last_name, label: "Last Name"
+        = f.input :phone_number, label: "Phone"
+        = f.input :zipcode, label: "ZIP Code"
+        .form-group
+        = f.submit "Add Target to Campaign", :class => "btn btn-default"

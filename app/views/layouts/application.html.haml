@@ -9,10 +9,7 @@
     = render :partial => "layouts/navbar"
 
     %div.container
-      %div.notice
-        = notice
-      %div.alert
-        = alert
+      = render :partial => "layouts/flash_messages", flash: flash
       = yield
 
     = render :partial => "layouts/footer"
