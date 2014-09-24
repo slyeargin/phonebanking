@@ -1,6 +1,12 @@
-%h1 Create a Campaign
+%div.col-xs-6.col-lg-4
+  =link_to "Create a Campaign", new_campaign_path
 
-= simple_form_for @campaign do |f|
-  = f.input :name
-  = f.input :summary, :as => :text
-  = f.submit "Create Campaign"
+%div.col-xs-12.col-sm-6.col-lg-8#your-campaigns
+  .panel.panel-default
+    .panel-heading Create a Campaign
+    .panel-body
+      = simple_form_for(@campaign, html: {class: 'form' }) do |f|
+        = f.input :name
+        = f.input :summary, :as => :text
+        .form-group
+        = f.submit "Create Campaign", :class => "btn btn-default"
