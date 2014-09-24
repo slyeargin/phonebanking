@@ -56,3 +56,5 @@ end
 gem 'haml'
 gem 'simple_form'
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'font-awesome-rails', '~> 4.2.0.0'
