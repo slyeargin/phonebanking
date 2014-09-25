@@ -29,4 +29,18 @@ feature "View a target" do
     @awareness.question.should == "Aware"
   end
 
+  scenario "Happy Path, caller doesn't answer" do
+    visit campaign_target_path(@presidentialprimary, @camacho)
+    page.should have_content("President Camacho")
+    current_path.should == campaign_target_path(@presidentialprimary, @camacho)
+    page.should have_content("Hi there.  Do you have a moment to talk about Brawndo, the thirst mutilator?")
+    choose('target_has_been_called_false')
+    click_button "Save Response"
+    current_path.should == campaign_path(@presidentialprimary)
+    @camacho.reload.has_been_called.should == false
+    @camacho.responses.count.should == 0
+    @awareness = Response.where(target_id: @camacho.id).first
+    @awareness.should == nil
+  end
+
 end

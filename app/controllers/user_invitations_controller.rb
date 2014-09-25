@@ -1,11 +1,10 @@
 class UserInvitationsController < Devise::InvitationsController
   def create
-    puts params
-    @user = User.invite!(invite_params)
-    @caller = Caller.create!(campaign_id: @user.invited_to_campaign, user_id: @user.id, is_campaign_owner: false)
+    super
+
+    @caller = Caller.create!(campaign_id: resource.invited_to_campaign, user: resource, is_campaign_owner: false)
     @caller.save
 
-    super
   end
 
   protected

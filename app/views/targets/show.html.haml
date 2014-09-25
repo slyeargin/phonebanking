@@ -3,7 +3,8 @@
   %p #{@campaign.summary}
 
 %div.col-xs-12.col-sm-6.col-lg-8
-  %h2 #{@target.first_name} #{@target.last_name} <small>#{@target.zipcode}</small>
+  %h2 #{@target.first_name} #{@target.last_name}
+  %h4.text-muted #{@target.address1}, #{@target.city}, #{@target.state} #{@target.zipcode}
 
   %h1.text-center.phone-number= number_to_phone(@target.phone_number, area_code: true)
 
@@ -31,3 +32,8 @@
         = question2_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
     .form-group
     = target_form.submit 'Save Response', :class => "btn btn-default"
+
+  - if @next_target
+    = link_to "Skip This Person", campaign_target_path(@campaign, @next_target)
+  - else
+    = link_to "Skip This Person", campaign_path(@campaign)
