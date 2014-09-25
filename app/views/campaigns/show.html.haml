@@ -4,6 +4,11 @@
 
   - if @is_admin
     = link_to "Add Target", new_campaign_target_path(@campaign)
+    #invite
+    = simple_form_for @resource, :url => user_invitation_path(@resource) do |f|
+      = f.input :email
+      = f.input :invited_to_campaign, :as => :hidden, :input_html => { :value => @campaign.id }
+      = f.submit "Invite"
 
 %div.col-xs-12.col-sm-6.col-lg-8
 
