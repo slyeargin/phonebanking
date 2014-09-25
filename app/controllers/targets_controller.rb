@@ -22,7 +22,7 @@ class TargetsController < ApplicationController
   def show
     @is_admin = current_user.callers.where("campaign_id = ?", params[:id]).pluck(:is_campaign_owner).first
     @target = Target.find(params[:id])
-    @next_target = @campaign.targets.where(has_been_called = false).where("id != #{@target.id}").order("RANDOM()").first
+    @next_target = @campaign.targets.where("has_been_called = false").where("id != #{@target.id}").order("RANDOM()").first
     if @target == nil || @target.has_been_called == true && @is_admin == false
       redirect_to campaign_path(@campaign)
     end
@@ -34,7 +34,7 @@ class TargetsController < ApplicationController
     @target = Target.find(params[:id])
     @target.assign_attributes(target_params)
     @target.save!
-    @uncalled = @campaign.targets.where(has_been_called = false).where("id != #{@target.id}").order("RANDOM()").first
+    @uncalled = @campaign.targets.where("has_been_called = false").where("id != #{@target.id}").order("RANDOM()").first
     if @uncalled == nil
       redirect_to campaign_path(@campaign)
     else
