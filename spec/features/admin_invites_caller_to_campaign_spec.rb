@@ -1,5 +1,3 @@
-require 'pry'
-
 feature "Adding a new campaign" do
 
   background do
@@ -28,7 +26,6 @@ feature "Adding a new campaign" do
     @invitee = User.where(email: "samantha@yearg.in").first
     @campaign = Campaign.where(name: "My Fantastic Campaign").first
     @caller = Caller.where(user_id: @invitee.id, campaign_id: @campaign.id, is_campaign_owner: false).first
-    binding.pry
     @invitee.should_not == nil
     @campaign.should_not == nil
     @campaign.name.should == "My Fantastic Campaign"
