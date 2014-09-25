@@ -26,7 +26,7 @@ feature "View a target" do
     @camacho.reload.has_been_called.should == true
     @camacho.responses.count.should == 2
     @awareness = Response.where(target_id: @camacho.id).first
-    @awareness.question.should == "Was the target aware?"
+    @awareness.question.should == "Aware"
   end
 
 end

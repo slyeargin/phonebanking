@@ -10,8 +10,6 @@ feature "Adding a new campaign" do
   end
 
   scenario "Happy Path" do
-    visit '/'
-    click_on "View Campaigns"
     page.should have_content("Your Campaigns")
     current_path.should == campaigns_path
     click_on "Create a Campaign"

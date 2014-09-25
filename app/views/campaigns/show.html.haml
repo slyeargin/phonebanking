@@ -1,15 +1,29 @@
-%h1= @campaign.name
+%div.col-xs-6.col-lg-4
+  %h2 #{@campaign.name}
+  %p #{@campaign.summary}
 
-%hr
+  - if @is_admin
+    = link_to "Add Target", new_campaign_target_path(@campaign)
+    #invite
+    = simple_form_for @resource, :url => user_invitation_path(@resource) do |f|
+      = f.input :email
+      = f.input :invited_to_campaign, :as => :hidden, :input_html => { :value => @campaign.id }
+      = f.submit "Invite"
 
-%ul#targets
- - @campaign.targets.each do |tar|
-  %li #{tar.first_name} #{tar.last_name} - #{tar.phone_number} - #{tar.zipcode} - #{link_to "View", campaign_target_path(@campaign, tar)}
+%div.col-xs-12.col-sm-6.col-lg-8
 
-- if @is_admin
- = link_to "Add Target", new_campaign_target_path(@campaign)
- #invite
- = simple_form_for @resource, :url => user_invitation_path(@resource) do |f|
-  = f.input :email
-  = f.input :invited_to_campaign, :as => :hidden, :input_html => { :value => @campaign.id }
-  = f.submit "Invite"
+  - if @is_admin
+    .panel.panel-default
+      .panel-heading Campaign Targets
+      - if @campaign.targets.count >= 1
+        %div.table-responsive
+          %table.table#targets
+            - @campaign.targets.each do |tar|
+              %tr
+                %td #{tar.first_name} #{tar.last_name}
+                %td #{tar.phone_number}
+                %td #{tar.zipcode}
+                %td #{link_to "View", campaign_target_path(@campaign, tar)}
+      - else
+        .panel-body
+          %p.ifempty No targets belong to this campaign. #{link_to "Add one?", new_campaign_target_path(@campaign)}

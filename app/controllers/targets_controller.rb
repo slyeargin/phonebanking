@@ -11,7 +11,8 @@ class TargetsController < ApplicationController
   def create
     @target = @campaign.targets.build(target_params)
     if @target.save
-      redirect_to campaign_path(@campaign), notice: "#{@target.first_name} #{@target.last_name} was added to your campaign."
+      flash[:success] = "#{@target.first_name} #{@target.last_name} was added to your campaign."
+      redirect_to campaign_path(@campaign)
     else
       flash.alert = "Target could not be created."
       render :new
@@ -22,7 +23,7 @@ class TargetsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @target = Target.find(params[:id])
     @response = Response.new
-    @script = Script.where("campaign_id = ?", params[:campaign_id]).pluck(:copy)
+    @script = Script.where("campaign_id = ?", params[:campaign_id]).pluck(:copy).first
   end
 
   def update

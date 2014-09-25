@@ -1,9 +1,12 @@
-%h1 Your Campaigns
-
-#your-campaigns
-  - if @campaigns.count >= 1
-    %ul#campaigns= render @campaigns
-  - else
-    %h2 You don't belong to any campaigns.
-
+%div.col-xs-6.col-lg-4
   =link_to "Create a Campaign", new_campaign_path
+
+%div.col-xs-12.col-sm-6.col-lg-8#your-campaigns
+  .panel.panel-default
+    .panel-heading Your Campaigns
+    - if @campaigns.count >= 1
+      %div.table-responsive
+        %table.table#campaigns= render @campaigns
+    - else
+      .panel-body
+        %p.ifempty You don't belong to any campaigns. #{link_to "Create one?", new_campaign_path}
