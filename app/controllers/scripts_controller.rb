@@ -11,9 +11,10 @@ class ScriptsController < ApplicationController
   def create
     @script = @campaign.scripts.build(script_params)
     if @script.save
-      redirect_to new_campaign_target_path(@campaign), notice: "Your script was added to your campaign."
+      flash[:success] = "Your script was added to your campaign."
+      redirect_to new_campaign_target_path(@campaign)
     else
-      flash.alert = "Script could not be created."
+      flash[:error] = "Script could not be created."
       render :new
     end
   end
