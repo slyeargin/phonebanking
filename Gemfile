@@ -53,7 +53,11 @@ group :test do
   gem 'fabrication'
 end
 
+gem 'rails_12factor', group: :production
+
 gem 'haml'
 gem 'simple_form'
 gem 'devise'
 gem 'devise_invitable'
+gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'font-awesome-rails', '~> 4.2.0.0'
