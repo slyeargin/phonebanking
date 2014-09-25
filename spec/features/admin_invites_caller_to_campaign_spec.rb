@@ -10,7 +10,6 @@ feature "Adding a new campaign" do
     fill_in "Password", with: @user.password
     click_on 'Sign in'
     visit '/'
-    click_on "View Campaigns"
     page.should have_content("Your Campaigns")
     current_path.should == campaigns_path
     click_on "Create a Campaign"
@@ -23,7 +22,6 @@ feature "Adding a new campaign" do
 
   scenario "Happy Path, admin adds a user to a campaign" do
     visit '/'
-    click_on "View Campaigns"
     click_on "My Fantastic Campaign"
     fill_in "Email", with: "samantha@yearg.in"
     click_on "Invite"
@@ -42,7 +40,6 @@ feature "Adding a new campaign" do
     @campaign2 = Fabricate(:campaign, name: "Subpar Campaign", summary: "It's okay")
     @admincaller = Fabricate(:caller, user_id: @user.id, campaign_id: @campaign2.id, is_campaign_owner: true)
     visit '/'
-    click_on "View Campaigns"
     click_on "My Fantastic Campaign"
     fill_in "Email", with: "samantha@yearg.in"
     click_on "Invite"
