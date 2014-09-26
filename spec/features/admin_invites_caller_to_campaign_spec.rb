@@ -21,7 +21,7 @@ feature "Adding a new campaign" do
   scenario "Happy Path, admin adds a user to a campaign" do
     visit '/'
     click_on "My Fantastic Campaign"
-    fill_in "Email", with: "samantha@yearg.in"
+    fill_in "Invite A Caller to Your Campaign", with: "samantha@yearg.in"
     click_on "Invite"
     @invitee = User.where(email: "samantha@yearg.in").first
     @campaign = Campaign.where(name: "My Fantastic Campaign").first
@@ -38,14 +38,14 @@ feature "Adding a new campaign" do
     @admincaller = Fabricate(:caller, user_id: @user.id, campaign_id: @campaign2.id, is_campaign_owner: true)
     visit '/'
     click_on "My Fantastic Campaign"
-    fill_in "Email", with: "samantha@yearg.in"
+    fill_in "Invite A Caller to Your Campaign", with: "samantha@yearg.in"
     click_on "Invite"
     @invitee = User.where(email: "samantha@yearg.in").first
     @campaign1 = Campaign.where(name: "My Fantastic Campaign").first
     @caller1 = Caller.where(user_id: @invitee.id, campaign_id: @campaign1.id, is_campaign_owner: false).first
     visit campaigns_path
     click_on "Subpar Campaign"
-    fill_in "Email", with: "samantha@yearg.in"
+    fill_in "Invite A Caller to Your Campaign", with: "samantha@yearg.in"
     click_on "Invite"
     @caller2 = Caller.where(user_id: @invitee.id, campaign_id: @campaign2.id, is_campaign_owner: false).first
     @invitee.should_not == nil

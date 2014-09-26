@@ -25,6 +25,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = current_user.campaigns.find(params[:id])
     @is_admin = current_user.callers.where("campaign_id = ?", params[:id]).pluck(:is_campaign_owner).first
+    @uncalled_count = @campaign.targets.where(has_been_called: false).order("RANDOM()").first
     @resource = User.new
     @caller = Caller.new
   end
