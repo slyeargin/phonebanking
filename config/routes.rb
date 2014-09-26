@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :campaigns, except: [:destroy, :update, :edit] do
     resources :scripts, only: [:new, :create]
+    resources :callers, only: [:destroy]
     resources :targets, only: [:new, :create, :show, :update] do
       resources :responses, only: [:new, :create]
     end
