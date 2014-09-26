@@ -14,6 +14,15 @@
       .form-group
       = f.submit "Invite", :class => "btn btn-default"
 
+    %hr
+
+    %table#callers
+      %h4 Callers
+      - @callers.each do | c |
+        %tr
+          %td #{c.email}
+          %td.destroy= link_to "X", campaign_caller_path(@campaign, c.id), :method => :delete
+
 %div.col-xs-12.col-sm-6.col-lg-8
   - if @uncalled_count
     %div.call-button= link_to "Start Calling", campaign_target_path(@campaign, @campaign.targets.where(has_been_called: false).order("RANDOM()").first), class: "btn btn-primary btn-lg btn-block"

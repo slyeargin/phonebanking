@@ -27,6 +27,14 @@
   padding: 2em 0;
 }
 
+#callers {
+  width: 75%;
+  .destroy {
+    float: right;
+  }
+}
+
+
 #answered-call .question, #response .question {
   span {
     input {
