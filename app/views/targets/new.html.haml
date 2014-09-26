@@ -9,7 +9,10 @@
       = simple_form_for [@campaign, @target], url: campaign_targets_path do |f|
         = f.input :first_name, label: "First Name"
         = f.input :last_name, label: "Last Name"
-        = f.input :phone_number, label: "Phone"
-        = f.input :zipcode, label: "ZIP Code"
+        = f.input :address1, label: "Address"
+        = f.input :city, label: "City"
+        = f.input :state, label: "State", :input_html => {:maxlength => 2 }
+        = f.input :phone_number, label: "Phone", :input_html => {:maxlength => 10 }
+        = f.input :zipcode, label: "ZIP Code", :input_html => {:maxlength => 5 }
         .form-group
         = f.submit "Add Target to Campaign", :class => "btn btn-default"

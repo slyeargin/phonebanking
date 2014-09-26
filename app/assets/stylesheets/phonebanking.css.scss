@@ -17,7 +17,7 @@
     }
     p {
       color: #eee;
-      text-shadow:         3px 3px 15px rgba(0, 0, 68, 0.67);
+      text-shadow: 3px 3px 15px rgba(0, 0, 68, 0.67);
     }
   }
 }
@@ -27,12 +27,20 @@
   padding: 2em 0;
 }
 
-.question {
+#answered-call .question, #response .question {
   span {
     input {
       margin-left: 10px;
     }
   }
+}
+
+.call-button {
+  padding: 20px 0;
+}
+
+#user_email {
+  width: 60%;
 }
 
 .footer {
