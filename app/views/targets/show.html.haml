@@ -17,7 +17,13 @@
       %div.question
         = target_form.label :has_been_called, 'Did you speak to a person or leave a voicemail?'
         = target_form.collection_radio_buttons :has_been_called, [[true, 'Yes'] ,[false, 'No']], :first, :last
-    %div#response
+    %div#response-clarify
+      %div.question
+        %div.form-group
+          %label Did you speak to #{@target.first_name}?
+          %input#talked-to-target{:checked => "checked", :name => "title", :type => "radio", :value => "Yes"} Yes
+          %input#did-not-talk-to-target{:name => "title", :type => "radio", :value => "No"} No
+    %div#response-yes
       %div.question
         = target_form.simple_fields_for :responses, @response do | question1_form |
           = question1_form.input :question, :as => :hidden, :input_html => { :value => "Aware" }
