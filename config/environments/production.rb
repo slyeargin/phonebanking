@@ -86,5 +86,5 @@ Rails.application.configure do
     :user_name => ENV['MAILGUN_SMTP_USER'],
     :password => ENV['MAILGUN_SMTP_PASS']
   }
-  config.action_mailer.default_url_options = { :host => 'http://slyeargin-phonebanking.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://phonebanking.slyeargin.com' }
 end
