@@ -27,7 +27,7 @@
   padding: 2em 0;
 }
 
-.question {
+#answered-call .question, #response .question {
   span {
     input {
       margin-left: 10px;
