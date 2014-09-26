@@ -13,23 +13,25 @@
     %p.script.text-muted= @script
 
   = simple_form_for [@campaign, @target] do | target_form |
-    %div.question
-      = target_form.label :has_been_called, 'Did you speak to a person or leave a voicemail?'
-      = target_form.collection_radio_buttons :has_been_called, [[true, 'Yes'] ,[false, 'No']], :first, :last
-    %div.question
-      = target_form.simple_fields_for :responses, @response do | question1_form |
-        = question1_form.input :question, :as => :hidden, :input_html => { :value => "Aware" }
-        = question1_form.input :contacted_when, :as => :hidden, :input_html => { :value => Time.now }
-        = question1_form.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
-        = question1_form.label :answer, 'Was ' + @target.first_name + ' aware of ' + @campaign.name + '?'
-        = question1_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
-    %div.question
-      = target_form.simple_fields_for :responses, @response do | question2_form |
-        = question2_form.input :question, :as => :hidden, :input_html => { :value => "Supports the campaign" }
-        = question2_form.input :contacted_when, :as => :hidden, :input_html => { :value => Time.now }
-        = question2_form.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
-        = question2_form.label :answer, 'Does ' +  @target.first_name + ' support ' + @campaign.name + '?'
-        = question2_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
+    %div#answered-call
+      %div.question
+        = target_form.label :has_been_called, 'Did you speak to a person or leave a voicemail?'
+        = target_form.collection_radio_buttons :has_been_called, [[true, 'Yes'] ,[false, 'No']], :first, :last
+    %div#response
+      %div.question
+        = target_form.simple_fields_for :responses, @response do | question1_form |
+          = question1_form.input :question, :as => :hidden, :input_html => { :value => "Aware" }
+          = question1_form.input :contacted_when, :as => :hidden, :input_html => { :value => Time.now }
+          = question1_form.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
+          = question1_form.label :answer, 'Was ' + @target.first_name + ' aware of ' + @campaign.name + '?'
+          = question1_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
+      %div.question
+        = target_form.simple_fields_for :responses, @response do | question2_form |
+          = question2_form.input :question, :as => :hidden, :input_html => { :value => "Supports the campaign" }
+          = question2_form.input :contacted_when, :as => :hidden, :input_html => { :value => Time.now }
+          = question2_form.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
+          = question2_form.label :answer, 'Does ' +  @target.first_name + ' support ' + @campaign.name + '?'
+          = question2_form.collection_radio_buttons :answer, [[true, 'Yes'] ,[false, 'No']], :first, :last
     .form-group
     = target_form.submit 'Save Response', :class => "btn btn-default"
 
