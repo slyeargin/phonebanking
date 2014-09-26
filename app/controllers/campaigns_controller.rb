@@ -28,6 +28,7 @@ class CampaignsController < ApplicationController
     @uncalled_count = @campaign.targets.where(has_been_called: false).order("RANDOM()").first
     @resource = User.new
     @caller = Caller.new
+    @callers = @campaign.users.where("user_id != #{current_user.id}")
   end
 
   protected
