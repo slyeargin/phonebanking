@@ -1,6 +1,8 @@
 Phonebanking
 ============
 
+[![Build Status](https://travis-ci.org/slyeargin/phonebanking.svg)](https://travis-ci.org/slyeargin/phonebanking)
+
 Phonebanking allows phonebanking anywhere.
 
 ## Features
