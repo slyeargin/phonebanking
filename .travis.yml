@@ -6,6 +6,5 @@ addons:
 before_script:
   - cp config/database.yml.example config/database.yml
   - psql -c 'create database phonebanking_test;' -U postgres
-  - psql -U postgres -q -d phonebanking_test -f db/structure.sql
 
-script: 'bundle exec rake'
+script: 'xvfb-run bundle exec rake'
