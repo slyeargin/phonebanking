@@ -4,7 +4,7 @@ rvm:
 addons:
   postgresql: "9.3"
 before_script:
-  - cp config/database.yml.example config/database.yml
+  - cp config/database.yml.travis config/database.yml
   - psql -c 'create database phonebanking_test;' -U postgres
 
 script: 'xvfb-run bundle exec rake'
