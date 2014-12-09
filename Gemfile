@@ -61,3 +61,4 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'font-awesome-rails', '~> 4.2.0.0'
+gem 'coveralls', require: false
