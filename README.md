@@ -1,7 +1,7 @@
 Phonebanking
 ============
 
-[![Build Status](https://travis-ci.org/slyeargin/phonebanking.svg)](https://travis-ci.org/slyeargin/phonebanking)
+[![Build Status](https://travis-ci.org/slyeargin/phonebanking.svg)](https://travis-ci.org/slyeargin/phonebanking) [![Coverage Status](https://coveralls.io/repos/slyeargin/phonebanking/badge.png?branch=master)](https://coveralls.io/r/slyeargin/phonebanking?branch=master)[![Dependency Status](https://gemnasium.com/slyeargin/phonebanking.svg)](https://gemnasium.com/slyeargin/phonebanking)
 
 Phonebanking allows phonebanking anywhere.
 

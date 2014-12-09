@@ -207,14 +207,14 @@ DEPENDENCIES
   bootstrap-sass (>= 3.2.0.2, <= 3.3.1.0)
   capybara
   coffee-rails (>= 4.0.1, <= 4.1.0)
-  coveralls
+  coveralls (<= 0.7.2)
   devise
   devise_invitable
   fabrication
   font-awesome-rails (~> 4.2.0.0)
   haml
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (<= 4.0.0)
   launchy
   pg
   pry-rails
