@@ -14,4 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore the database config.
 /config/database.yml
+
+# Ignore coveralls data.
+/coverage
