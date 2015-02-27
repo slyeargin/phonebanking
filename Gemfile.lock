@@ -220,9 +220,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (<= 3.3.1.0)
+  bootstrap-sass (>= 3.2.0.2, <= 3.3.1.0)
   capybara
-  coffee-rails (<= 4.1.0)
+  coffee-rails (>= 4.0.1, <= 4.1.0)
   coveralls (<= 0.7.2)
   devise
   devise_invitable
@@ -234,7 +234,7 @@ DEPENDENCIES
   launchy
   pg
   pry-rails
-  rails (<= 4.1.8)
+  rails (>= 4.1.6, <= 4.1.8)
   rails_12factor
   rspec-rails
   sass-rails (~> 4.0.3)
