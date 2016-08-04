@@ -20,7 +20,7 @@ Callers can:
 
 Technologies
 
-* Rails 4
+* Rails 5
 * jQuery
 * PostgreSQL
 * Sass
